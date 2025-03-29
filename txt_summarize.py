@@ -4,6 +4,7 @@ import nltk
 import spacy
 import numpy as np
 import networkx as nx
+import warnings
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, pipeline
 from nltk.tokenize import sent_tokenize
 from nltk.corpus import stopwords
@@ -15,6 +16,10 @@ from rouge_score import rouge_scorer
 # Download necessary NLTK resources
 nltk.download('punkt', quiet=True)
 nltk.download('stopwords', quiet=True)
+
+# Suppress specific warnings
+warnings.filterwarnings("ignore", message="Some weights of")
+warnings.filterwarnings("ignore", message="You should probably TRAIN this model")
 
 class TextSummarizer:
     def __init__(self, model_name="google/pegasus-large"):
@@ -34,14 +39,14 @@ class TextSummarizer:
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.model_name = model_name
         
-        # Load tokenizer and model
+        # Load tokenizer and model once
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModelForSeq2SeqLM.from_pretrained(model_name).to(self.device)
         
-        # Create a summarization pipeline for alternative approach
+        # Use the same model instance for the pipeline
         self.summarization_pipeline = pipeline(
             "summarization", 
-            model=model_name, 
+            model=self.model,  # Use existing model instance
             tokenizer=self.tokenizer,
             device=0 if torch.cuda.is_available() else -1
         )
@@ -92,8 +97,8 @@ class TextSummarizer:
         summary_ids = self.model.generate(
             inputs["input_ids"],
             attention_mask=inputs["attention_mask"],
-            num_beams=4,  
-            length_penalty=2.0,  # Higher penalty encourages longer outputs
+            num_beams=5,  # Increased beam search
+            length_penalty=1.5,  # Encourage longer summaries when needed
             min_length=min_length,
             max_length=max_length,
             no_repeat_ngram_size=2,  # Reduced from 3 to allow more flexibility
