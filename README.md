@@ -58,8 +58,35 @@ You can specify different models using the `--model` parameter:
 - `allenai/led-large-16384`: Longformer model for handling very long documents
 
 Example:
+
+[View Sample Text File](sample.txt)
+```
+# Text from  sample.txt
+SpaceX’s Starship Catcher, often referred to as the “Mechazilla” system, is an ambitious and innovative approach to rocket recovery and reusability. This catching system is designed to retrieve the Super Heavy booster—the first stage of the Starship launch system—using large mechanical arms attached to the launch tower. The concept is meant to streamline recovery operations, reduce turnaround time, and significantly lower the cost of space travel.
+
+How the Catcher Works
+Instead of relying on traditional landing legs, the Super Heavy booster will descend toward the launch tower after launch, using its grid fins for control. The massive robotic arms, which resemble giant “chopsticks,” will then position themselves to catch the descending booster just above the ground. The goal is to clamp onto the booster around the grid fins and securely hold it in place before lowering it onto the launch pad for reuse.
+
+By eliminating landing legs, SpaceX aims to reduce the booster’s weight, increasing payload capacity and simplifying the overall design. This method also minimizes wear and tear that would occur from landing on hard surfaces, potentially extending the lifespan of each booster.
+
+Challenges and Risks
+While the concept is revolutionary, it comes with significant engineering and operational challenges. The precision required for the booster to align with the catcher arms is extreme. Any deviation in trajectory or timing could result in a catastrophic failure. Moreover, the mechanical arms must be robust enough to withstand the impact forces while maintaining a high degree of flexibility and control.
+
+Weather conditions, such as strong winds or turbulence, could also pose a challenge during the catching process. SpaceX engineers are actively refining guidance systems, real-time adjustments, and backup safety protocols to mitigate these risks.
+
+Starship and Future Applications
+The Starship system, which includes the booster and the upper-stage spacecraft, is designed for deep-space missions, including trips to the Moon and Mars. If the catcher system proves successful, it could enable a rapid launch turnaround—possibly within hours—making Starship the first fully reusable rocket system capable of frequent space missions.
+
+In the long term, this technology could revolutionize space travel by making it as routine as air travel. By cutting launch costs and enabling high-frequency launches, SpaceX’s Starship Catcher could play a pivotal role in the company’s vision of making life multiplanetary.
+```
 ```bash
 python txt_summarize.py --input sample.txt --output summary.txt --method abstractive --model google/pegasus-xsum --min_length 100
+```
+[View Summary Text File](summary.txt)
+```
+# After Summarize summary.txt
+SpaceX, the private rocket company, is developing a robotic system to recover and reuse its Super Heavy rocket booster after a launch, which could radically change the way space missions are launched and reusability is achieved, according to the company’s founder and chief executive officer, Elon Musk, who unveiled the concept at the International Space Station (ISS) conference in March.
+ If the catcher system proves successful, it could enable a rapid launch turnaround—possibly within hours—making Starship the first fully reusable rocket system capable of frequent space launches.
 ```
 
 
@@ -107,6 +134,13 @@ The summarizer calculates ROUGE scores to evaluate summary quality:
 - **ROUGE-2**: Overlap of bigrams
 - **ROUGE-L**: Longest Common Subsequence
 
-## License
+## Contributing
 
-MIT 
+Contributions to this project are welcome! Feel free to submit issues, feature requests, or pull requests to help improve this image caption generator.
+
+## Contact
+
+- GitHub: [https://github.com/AhadSiddiki](https://github.com/AhadSiddiki)
+- Email: [ahad.siddiki25@gmail.com](mailto:ahad.siddiki25@gmail.com)
+- LinkedIn: [http://www.linkedin.com/in/ahad-siddiki/](http://www.linkedin.com/in/ahad-siddiki/)
+- Instagram: [www.instagram.com/ahad.siddiki/](https://www.instagram.com/ahad.siddiki/)
